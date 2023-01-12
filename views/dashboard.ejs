@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashbord</title>
+    <link rel="stylesheet" href="public/stylesheet/style.css">
+</head>
+<body> 
+   
+    <form action="/logout" method="post">
+        <input type="submit" value="Cerrar Sesión">
+    </form>
+    <h1>Bienvenido <%= usuario %> </h1>
+    <h2>LISTA DE TAREAS</h2>
+    <form action="/dashboard" method="post">
+      <input type="text" name="nombre" id="description" placeholder="Agregar tareas">
+      <button>AGREGAR</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>DESCRIPTION</th>
+          <th>OPCION</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% tareas.forEach(tarea => { %>
+          <tr>
+            <td><%= tarea.nombre %></td>
+            <td>
+              <form action="/dashboard/<%= tarea.id %>" method="post">
+                <button type="submit">EDITAR</button>
+              </form>
+              <form action="/dashboard/<%= tarea.id %>" method="delete">
+                <button type="submit">ELIMINAR</button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>  
+      </tbody>
+    </table>
+  </body>
+  </html>

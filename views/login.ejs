@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Login</title>
+    
+</head>
+<body>
+  <div class="login_form">
+    <h2>Bienvenido!</h2>
+    <ul class="lista_errores">
+        <% if(typeof errores !=='undefined' ) {%>
+          <% errores.forEach(error=> { %>
+            <li class="list_item">
+              <%= error.msg %>
+            </li>
+            <%});%>
+            <%}%>
+       </ul>
+      <form action="/login" method="post">
+          <input type="email" id="email" name="email" placeholder="Correo Electronico">
+          <input type="password" id="password" name="password" placeholder="Contraseña">
+          <input type="submit"  class="btn_login" value="Login">
+        <p class="text">¿No tienes una cuenta creada? <a href="/register" class="btn_register">Register</a></p>
+        <p class="text recupeContra">¿Olvide mi contraseña? <a href="/recupeContra" class="btn_contra">Recuperar contraseña</a></p>
+      </form>
+    </div> 
+
+  </body>
+  
+  </html>
